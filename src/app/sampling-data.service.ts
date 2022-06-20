@@ -8,12 +8,17 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 export class SamplingDataService {
   constructor(private http: HttpClient) { }
   private baseUrl = 'http://localhost:5000';
-
   loadLastMinSampling(): Observable<number[]> {
 
     return this.http.get<any>(this.baseUrl+"/getLastMintueSampling")
     .pipe(
         map(res=>res["LastMinSampling"])
+        );
+  }
+  loadLastSampling(): Observable<any> {
+    return this.http.get<any>(this.baseUrl+"/getLastSampling")
+    .pipe(
+        map(res=>console.log(res))
         );
   }
 }

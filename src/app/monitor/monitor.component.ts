@@ -11,6 +11,7 @@ export class MonitorComponent implements OnInit {
 
   constructor(private samplingDataService: SamplingDataService){}
   private requestInterval :any 
+  private requestInterval2: any
   chartOption: EChartsOption;
   ngOnInit(){
     this.requestInterval = setInterval(()=>{
@@ -18,10 +19,16 @@ export class MonitorComponent implements OnInit {
         .subscribe( res => this.setOption(res) );
     }
   ,1000);
+  this.requestInterval2 = setInterval(()=>{
+    return this.samplingDataService.loadLastSampling()
+      .subscribe( res => this.setOption(res) );
   }
+,1000);
+}
+
   ngOnDestroy(): void{
     this.requestInterval.clearInterval()
-
+    this.requestInterval2.clearInterval()
   }
   setOption(samplingList:number[]){
     this.chartOption = {
