@@ -9,36 +9,6 @@ import { SamplingDataService } from './sampling-data.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  constructor(private samplingDataService: SamplingDataService){}
-  private requestInterval :any 
-  chartOption: EChartsOption;
-  ngOnInit(){
-    this.requestInterval = setInterval(()=>{
-      return this.samplingDataService.loadLastMinSampling()
-        .subscribe( res => this.setOption(res) );
-    }
-  ,1000);
-  }
-  ngOnDestroy(): void{
-    this.requestInterval.clearInterval()
+  constructor(){}
 
-  }
-  setOption(samplingList:number[]){
-    this.chartOption = {
-      xAxis: {
-        type: 'category',
-        // data: Array.from(Array(60).keys()),
-      },
-      yAxis: {
-        type: 'value',
-      },
-      series: [
-        {
-          data: samplingList,
-          type: 'line',
-        },
-      ],
-    };
-  }
- 
 }

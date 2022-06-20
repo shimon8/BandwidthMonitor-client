@@ -5,10 +5,12 @@ import { HttpClientModule } from '@angular/common/http';
 
 import * as echarts from 'echarts';
 import { AppComponent } from './app.component';
+import { MonitorComponent } from './monitor/monitor.component';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    MonitorComponent
   ],
   imports: [
     BrowserModule,
