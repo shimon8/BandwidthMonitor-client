@@ -10,17 +10,16 @@ import { SamplingDataService } from '.././sampling-data.service';
 export class MonitorComponent implements OnInit {
 
   constructor(private samplingDataService: SamplingDataService){}
+  DELAY_SAMPLING:number = 1000;
   private samplingList=Array<number>();
   updateOptions: any;
-
   timer :any;
   chartOption: EChartsOption;
-  ngOnInit(){
-    
+  ngOnInit(){   
       this.samplingDataService.loadLastMinSampling()
-        .subscribe( res => {
-          this.samplingList=res;
-          this.setOption(res);
+        .subscribe( lastMinSampling => {
+          this.samplingList=lastMinSampling;
+          this.setOption(lastMinSampling);
         });
   this.timer = setInterval(() => {
     this.samplingDataService.loadLastSampling()
@@ -32,7 +31,7 @@ export class MonitorComponent implements OnInit {
         data: this.samplingList
       }]
     }});
-  }, 1000);
+  }, this.DELAY_SAMPLING);
 }
 
   ngOnDestroy(): void{
@@ -68,6 +67,5 @@ export class MonitorComponent implements OnInit {
   updateSampling(newVal:number){
     this.samplingList =  [newVal,...this.samplingList.slice(0,-1)];
   }
- 
 }
 
