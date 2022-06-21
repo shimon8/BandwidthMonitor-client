@@ -6,11 +6,13 @@ import { HttpClientModule } from '@angular/common/http';
 import * as echarts from 'echarts';
 import { AppComponent } from './app.component';
 import { MonitorComponent } from './monitor/monitor.component';
+import { DetailsComponent } from './details/details.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    MonitorComponent
+    MonitorComponent,
+    DetailsComponent
   ],
   imports: [
     BrowserModule,

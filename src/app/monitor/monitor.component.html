@@ -1,8 +1,9 @@
 <div>
     <div>
-        <div echarts  [options]="chartOption" class="demo-chart"></div>
+        <div echarts [autoResize]="true" [options]="chartOption" [merge]="updateOptions" class="demo-chart"></div>
     </div>
+    
     <div>
-        
+        <app-details></app-details>
     </div>
 </div>
