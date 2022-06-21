@@ -25,7 +25,8 @@ export class MonitorComponent implements OnInit {
   this.timer = setInterval(() => {
     this.samplingDataService.loadLastSampling()
     .subscribe( res => {
-      this.updateSampling(res['current_bytes']);
+      this.samplingDataService.currentSampling$.next(res);
+      this.updateSampling(res.current_bytes);
       this.updateOptions = {
       series: [{
         data: this.samplingList
@@ -39,9 +40,9 @@ export class MonitorComponent implements OnInit {
   }
   setOption(samplingList:number[]){
     this.chartOption = {
+      
       xAxis: {
         type: 'category',
-        //data: Array.from({length: 60}, (_, i) => i + 1),
         min:0,
         max:60,
         show: false,
@@ -55,11 +56,9 @@ export class MonitorComponent implements OnInit {
       series: [
         {
           showSymbol: false,
-          // hoverAnimation: false,
           data: samplingList,
           type: 'line',
           animation: false,
-          // animationDelayUpdate: 0
         },
       ],
     
@@ -68,7 +67,6 @@ export class MonitorComponent implements OnInit {
   }
   updateSampling(newVal:number){
     this.samplingList =  [newVal,...this.samplingList.slice(0,-1)];
-    console.log(this.samplingList);
   }
  
 }

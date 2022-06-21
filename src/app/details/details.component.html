@@ -1,3 +1,12 @@
-<p>{{(sampling$ |async)?.bytes_recv}}</p>
-<p>{{(sampling$ |async)?.bytes_sent}}</p>
-<p>{{(sampling$ |async)?.current_bytes}}</p>
+<div dir=rtl class="text">
+    <div class="dynamic_text">
+        <h1>שלח : {{(sampling$ |async)?.bytes_sent }} </h1>
+        <h1>קבל : {{(sampling$ |async)?.bytes_recv}}</h1>
+        <h1>סה"כ : {{(sampling$ |async)?.current_bytes}}</h1>
+    </div>
+    <mat-divider></mat-divider>
+    <div class="constant_text">
+        <h1>ערך מינימלי שנבחר :  {{lowValue}}</h1>
+        <h1>ערך מקסימלי שנבחר :  {{highValue}}</h1>
+    </div>
+</div>

@@ -1,0 +1,17 @@
+.text{
+  font-size: 12px;
+  margin-right: 2%;
+  color:dimgray;
+
+}
+.dynamic_text {
+    font-family: 'system-ui';
+    font-weight: bold;
+    text-align: right;
+  }
+  .constant_text{
+    display: flex;
+    flex-direction:row;
+    justify-content: center;
+    gap: 5%;
+  }
